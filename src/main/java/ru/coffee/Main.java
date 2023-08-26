@@ -8,14 +8,18 @@ import java.net.URL;
 
 public class Main {
 
-    private String yandexKey = "f4d143ce-ff0a-4ff9-be80-75c403d04352";
+    private static String url = "https://api.rasp.yandex.net/v3.0/search/?apikey={keyFromYandex}" +
+            "&from=s9607774&to=s9607404&date=2023-08-26";
 
     public static void main(String[] args) throws IOException {
 
-        String url = "https://api.rasp.yandex.net/v3.0/search/?apikey=f4d143ce-ff0a-4ff9-be80-75c403d04352" +
-                "&from=s9607774&to=s9607404&date=2023-08-26";
-        File file = new File("scheduleTrain.json");
+        getJsonFile();
+        ParseJsonTrain parseTrain = new ParseJsonTrain();
+        parseTrain.parse();
+    }
 
+    private static void getJsonFile() throws IOException {
+        File file = new File("jsonexample/scheduleTrain.json");
         URL obj = new URL(url);
         HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
         connection.setRequestMethod("GET");
@@ -26,13 +30,6 @@ public class Main {
                 out.write(inputLine);
             }
         }
-        ParseJsonTrain parseTrain = new ParseJsonTrain();
-        parseTrain.parse();
     }
+
 }
-
-// https://t.rasp.yandex.ru/station/9607493/ - Пермь 1
-// https://t.rasp.yandex.ru/station/9607418/ - Пальники
-
-//9607774 - пермь - 2
-//9607404 - екатеринбург

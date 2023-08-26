@@ -43,7 +43,7 @@ public class TestingJsonObject {
     @Test
     @SneakyThrows
     void jsonFileToPojo() {
-        File file = new File("employee.json");
+        File file = new File("jsonexample/employee.json");
         Employee employee = objectMapper.readValue(file, Employee.class);
 
         Assertions.assertEquals(employee.getFirstName(), "Sasha");
@@ -68,7 +68,7 @@ public class TestingJsonObject {
     @Test
     @SneakyThrows
     void fileToListObject() {
-        File file = new File("employeeList.json");
+        File file = new File("jsonexample/employeeList.json");
 
         List<Employee> employees = objectMapper.readValue(file, new TypeReference<>() {
         });
@@ -86,7 +86,7 @@ public class TestingJsonObject {
     @Test
     @SneakyThrows
     void fileToMap() {
-        File file = new File("employee.json");
+        File file = new File("jsonexample/employee.json");
 
         Map<String, Object> objectMap = objectMapper.readValue(file, new TypeReference<>() {
         });
@@ -101,7 +101,7 @@ public class TestingJsonObject {
     @Test
     @SneakyThrows
     void fileToPojoWithUnknownProperties() {
-        File file = new File("employeeWithUnknownProperties.json");
+        File file = new File("jsonexample/employeeWithUnknownProperties.json");
 
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
@@ -123,7 +123,7 @@ public class TestingJsonObject {
     @Test
     @SneakyThrows
     void fileToOrder() {
-        File file = new File("order.json");
+        File file = new File("jsonexample/order.json");
         Order order = objectMapper.readValue(file, Order.class);
 
         Assertions.assertEquals(order.getDate().getMonthValue(), 4);
@@ -134,7 +134,7 @@ public class TestingJsonObject {
     @Test
     @SneakyThrows
     void fileToCar() {
-        File file = new File("car.json");
+        File file = new File("jsonexample/car.json");
         Car car = objectMapper.readValue(file, Car.class);
 
         System.out.println(car);

@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class ParseJsonTrain {
 
-    File file = new File("scheduleTrain.json");
+    File file = new File("jsonexample/scheduleTrain.json");
     ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules();
 
     public void parse() {
